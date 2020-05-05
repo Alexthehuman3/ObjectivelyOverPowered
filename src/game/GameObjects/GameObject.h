@@ -10,14 +10,15 @@ class ButtonComponent;
 class GameObject
 {
  public:
-  GameObject()  = default;
-  ~GameObject() = default;
+  GameObject() = default;
+  ~GameObject();
 
  public:
-  ButtonComponent getButtonComp();
+  ButtonComponent* getButtonComp();
   void setButtonComp(ButtonComponent* buttonComponent);
 
  private:
+  ButtonComponent* buttonComponent = nullptr;
 };
 
 #endif // ANGRYBIRDS_GAMEOBJECT_H

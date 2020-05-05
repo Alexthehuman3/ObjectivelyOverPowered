@@ -3,3 +3,13 @@
 //
 
 #include "GameObject.h"
+
+ButtonComponent* GameObject::getButtonComp()
+{
+  return buttonComponent;
+}
+
+void GameObject::setButtonComp(ButtonComponent* newButtonComp)
+{
+  buttonComponent = newButtonComp;
+}
