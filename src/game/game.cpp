@@ -10,17 +10,19 @@
 /**
  *   @brief   Default Constructor.
  */
-AngryBirds::AngryBirds(ASGE::GameSettings settings) : OGLGame(settings)
+ESDR::ESDR(ASGE::GameSettings settings) : OGLGame(settings)
 {
   renderer->setClearColour(ASGE::COLOURS::SLATEGRAY);
   inputs->use_threads = false;
   toggleFPS();
 
+  /*
   // every game needs a good background
   menu_background = renderer->createRawSprite();
   menu_background->loadTexture("/data/images/menu.jpg");
   menu_background->width(static_cast<float>(ASGE::SETTINGS.window_width));
   menu_background->height(static_cast<float>(ASGE::SETTINGS.window_height));
+   */
 
   // create a camera pointing at the mid-point of the screen
   camera = ASGE::Camera2D{ static_cast<float>(ASGE::SETTINGS.window_width),
@@ -33,7 +35,7 @@ AngryBirds::AngryBirds(ASGE::GameSettings settings) : OGLGame(settings)
   logStartup();
 }
 
-void AngryBirds::logStartup() const
+void ESDR::logStartup() const
 {
   // these are just examples of the logging system.. you dont need to keep em
   std::ostringstream s{ "initialised complete" };
@@ -50,7 +52,7 @@ void AngryBirds::logStartup() const
  *   @brief   Destructor.
  *   @details Remove any non-managed memory and callbacks.
  */
-AngryBirds::~AngryBirds()
+ESDR::~ESDR()
 {
   delete menu_background;
   this->inputs->unregisterCallback(static_cast<unsigned int>(key_callback_id));
@@ -66,13 +68,13 @@ AngryBirds::~AngryBirds()
  *            callback should also be set in the initialise function.
  *   @return  True if the game initialised correctly.
  */
-bool AngryBirds::init()
+bool ESDR::init()
 {
   key_callback_id =
-    inputs->addCallbackFnc(ASGE::E_KEY, &AngryBirds::keyHandler, this);
+    inputs->addCallbackFnc(ASGE::E_KEY, &ESDR::keyHandler, this);
 
-  mouse_callback_id = inputs->addCallbackFnc(
-    ASGE::E_MOUSE_CLICK, &AngryBirds::clickHandler, this);
+  mouse_callback_id =
+    inputs->addCallbackFnc(ASGE::E_MOUSE_CLICK, &ESDR::clickHandler, this);
 
   setupObjects();
   setupPositions();
@@ -89,7 +91,7 @@ bool AngryBirds::init()
  *   @see     KeyEvent
  *   @return  void
  */
-void AngryBirds::keyHandler(ASGE::SharedEventData data)
+void ESDR::keyHandler(ASGE::SharedEventData data)
 {
   auto key = static_cast<const ASGE::KeyEvent*>(data.get());
 
@@ -124,7 +126,7 @@ void AngryBirds::keyHandler(ASGE::SharedEventData data)
  *   @see     ClickEvent
  *   @return  void
  */
-void AngryBirds::clickHandler(ASGE::SharedEventData data)
+void ESDR::clickHandler(ASGE::SharedEventData data)
 {
   auto click = static_cast<const ASGE::ClickEvent*>(data.get());
 
@@ -142,7 +144,7 @@ void AngryBirds::clickHandler(ASGE::SharedEventData data)
  *            the buffers are swapped accordingly and the image shown.
  *   @return  void
  */
-void AngryBirds::update(const ASGE::GameTime& game_time)
+void ESDR::update(const ASGE::GameTime& game_time)
 {
   // auto dt_sec = game_time.delta.count() / 1000.0;;
   // make sure you use delta time in any movement calculations!
@@ -160,29 +162,19 @@ void AngryBirds::update(const ASGE::GameTime& game_time)
  *            swapped accordingly and the image shown.
  *   @return  void
  */
-void AngryBirds::render()
+void ESDR::render()
 {
   renderer->setFont(0);
-
+  renderer->setProjectionMatrix(camera.getView());
   if (in_menu)
   {
-    renderer->renderSprite(*menu_background);
-  }
-  else
-  {
-    renderer->setProjectionMatrix(camera.getView());
-    renderer->renderSprite(*bird.spriteComponent()->getSprite());
+    if (menu_background)
+    {
+      renderer->renderSprite(*menu_background);
+    }
   }
 }
 
-void AngryBirds::setupObjects()
-{
-  bird.addSpriteComponent(
-    renderer.get(),
-    "/data/images/kenney_animalpackredux/PNG/Round/chicken.png");
-}
+void ESDR::setupObjects() {}
 
-void AngryBirds::setupPositions()
-{
-  bird.setPos(ASGE::Point2D{ 400, 400 });
-}
+void ESDR::setupPositions() {}

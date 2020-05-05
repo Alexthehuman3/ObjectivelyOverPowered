@@ -21,7 +21,13 @@ set(SOURCE_FILES
         "game/game.cpp")
 
 set(HEADER_FILES
-        "game/game.h")
+        "game/game.h"
+        "game/Menus/MainMenu.cpp"
+        "game/Menus/MainMenu.h"
+        "game/GameObjects/GameObject.cpp"
+        "game/GameObjects/GameObject.h"
+        "game/Components/UI/UIComponent.cpp"
+        "game/Components/UI/UIComponent.h" game/Components/UI/ButtonComponent.cpp game/Components/UI/ButtonComponent.h)
 
 ## the executable
 add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES})

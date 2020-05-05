@@ -1,17 +1,17 @@
 #pragma once
-#include "GameObjects/GameObject.h"
 #include <Engine/Camera2D.hpp>
 #include <Engine/OGLGame.h>
 #include <string>
 
 /**
  *  An OpenGL Game based on ASGE.
+ *  ESDR stands for Entertainment Software Development - Remastered
  */
-class AngryBirds : public ASGE::OGLGame
+class ESDR : public ASGE::OGLGame
 {
  public:
-  explicit AngryBirds(ASGE::GameSettings settings);
-  ~AngryBirds() final;
+  explicit ESDR(ASGE::GameSettings settings);
+  ~ESDR() final;
   bool init();
 
  private:
@@ -28,6 +28,4 @@ class AngryBirds : public ASGE::OGLGame
   ASGE::Sprite* menu_background = nullptr;
   ASGE::Camera2D camera;
   void logStartup() const;
-
-  GameObject bird;
 };

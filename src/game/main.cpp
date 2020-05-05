@@ -7,8 +7,8 @@ int main()
   game_settings.window_height = 720;
   game_settings.msaa_level    = 2;
 
-  // AngryBirds* asge_game(game_settings) = new AngryBirds;
-  AngryBirds* asge_game = new AngryBirds(game_settings);
+  // ESDR* asge_game(game_settings) = new ESDR;
+  ESDR* asge_game = new ESDR(game_settings);
   if (asge_game->init())
   {
     asge_game->run();
