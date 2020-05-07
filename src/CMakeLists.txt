@@ -27,7 +27,9 @@ set(HEADER_FILES
         "game/GameObjects/GameObject.cpp"
         "game/GameObjects/GameObject.h"
         "game/Components/UI/UIComponent.cpp"
-        "game/Components/UI/UIComponent.h" game/Components/UI/ButtonComponent.cpp game/Components/UI/ButtonComponent.h)
+        "game/Components/UI/UIComponent.h"
+        "game/Components/UI/ButtonComponent.cpp"
+        "game/Components/UI/ButtonComponent.h" game/Components/Core/RenderComponent.cpp game/Components/Core/RenderComponent.h)
 
 ## the executable
 add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES})

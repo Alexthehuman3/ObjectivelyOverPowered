@@ -14,7 +14,7 @@ class ButtonComponent : public UIComponent
   ButtonComponent(std::string text);
   ~ButtonComponent() override = default;
 
-  void update() override;
+  // void update() override;
 
  private:
   ASGE::Text button_text;

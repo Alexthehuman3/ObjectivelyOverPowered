@@ -7,4 +7,4 @@
 ButtonComponent::ButtonComponent(std::string text)
 {
   button_text.setString(text);
-};
+}

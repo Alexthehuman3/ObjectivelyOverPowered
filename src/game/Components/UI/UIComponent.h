@@ -20,7 +20,7 @@ class UIComponent
   UIComponent()          = default;
   virtual ~UIComponent() = default;
   virtual void update();
-  virtual void render();
+  // virtual void render();
 
  private:
   ASGE::Point2D UI_pos = { 0, 0 };
